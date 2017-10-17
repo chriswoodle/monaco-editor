@@ -1,5 +1,5 @@
 {
-  "name": "monaco-editor-bower",
+  "name": "monaco-editor",
   "description": "A browser based code editor",
   "main": "release/min/vs/loader.js",
   "version": "0.7.1",
