@@ -136,7 +136,7 @@ require(["vs/editor/editor.main"], function () {
 	var currentTheme = "vs";
 	select.onchange = function () {
 		currentTheme = select.options[select.selectedIndex].value;
-		monaco.editor.setTheme(currentTheme);
+		sampleEditor.updateOptions({ theme: currentTheme });
 	};
 
 	// on resize

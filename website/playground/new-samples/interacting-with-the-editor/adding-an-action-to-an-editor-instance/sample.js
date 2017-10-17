@@ -13,9 +13,11 @@ var editor = monaco.editor.create(document.getElementById("container"), {
 });
 
 // Explanation:
+// Try right clicking on an identifier or keyword => the action will be enabled (due to `tokensAtPosition`)
+// Try right clicking on a string => the action will be disabled (due to `tokensAtPosition`)
+// Try right clicking on whitespace => the action will be disabled (due to `wordAtPosition`)
 // Press F1 (Alt-F1 in IE) => the action will appear and run if it is enabled
 // Press Ctrl-F10 => the action will run if it is enabled
-// Press Chord Ctrl-K, Ctrl-M => the action will run if it is enabled
 
 editor.addAction({
 	// An unique identifier of the contributed action.
@@ -25,16 +27,8 @@ editor.addAction({
 	label: 'My Label!!!',
 
 	// An optional array of keybindings for the action.
-	keybindings: [
-		monaco.KeyMod.CtrlCmd | monaco.KeyCode.F10,
-		// chord
-		monaco.KeyMod.chord(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_K, monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_M)
-	],
+	keybindings: [monaco.KeyMod.CtrlCmd | monaco.KeyCode.F10],
 
-	// A precondition for this action.
-	precondition: null,
-
-	// A rule to evaluate on top of the precondition in order to dispatch the keybindings.
 	keybindingContext: null,
 
 	contextMenuGroupId: 'navigation',

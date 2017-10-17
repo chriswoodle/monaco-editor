@@ -1,0 +1,30 @@
+{
+  "name": "monaco-editor",
+  "description": "A browser based code editor",
+  "main": "release/min/vs/loader.js",
+  "authors": [
+    "Microsoft Corporation"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "monaco",
+    "editor",
+    "code"
+  ],
+  "homepage": "https://microsoft.github.io/monaco-editor",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "d168f4fc0e",
+  "_resolution": {
+    "type": "commit",
+    "commit": "d168f4fc0e200e7a31604213829aa726b1f918bb"
+  },
+  "_source": "https://github.com/Microsoft/monaco-editor.git",
+  "_target": "d168f4fc0e200e7a31604213829aa726b1f918bb",
+  "_originalSource": "https://github.com/Microsoft/monaco-editor.git"
+}

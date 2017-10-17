@@ -75,9 +75,9 @@ var PLAY_SAMPLES = [
 	},
 	{
 		chapter: "Customizing the appearence",
-		name: "Exposed colors",
-		id: "customizing-the-appearence-exposed-colors",
-		path: "customizing-the-appearence/exposed-colors"
+		name: "Exposed CSS classes",
+		id: "customizing-the-appearence-exposed-css-classes",
+		path: "customizing-the-appearence/exposed-css-classes"
 	},
 	{
 		chapter: "Customizing the appearence",
@@ -126,12 +126,6 @@ var PLAY_SAMPLES = [
 		name: "Completion provider example",
 		id: "extending-language-services-completion-provider-example",
 		path: "extending-language-services/completion-provider-example"
-	},
-	{
-		chapter: "Extending Language Services",
-		name: "Codelens provider example",
-		id: "extending-language-services-codelens-provider-example",
-		path: "extending-language-services/codelens-provider-example"
 	},
 	{
 		chapter: "Extending Language Services",

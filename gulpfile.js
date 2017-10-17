@@ -178,6 +178,14 @@ function addPluginDTS() {
 		// Ensure consistent indentation and line endings
 		contents = cleanFile(contents);
 
+		// Mark events in doc!!
+		contents = contents.replace(/( \*\/\n\s+)on(.*IDisposable)/gm, function(_, m0, m1) {
+			var m = m0.match(/( +)$/);
+			var indentation = m[1];
+			return ' * @event\n' + indentation + ' */\n' + indentation + 'on' + m1;
+		});
+
+
 		data.contents = new Buffer(contents);
 
 		fs.writeFileSync('website/playground/monaco.d.ts.txt', contents);
@@ -218,14 +226,14 @@ function addPluginThirdPartyNotices() {
 
 		var extraContent = [];
 		metadata.METADATA.PLUGINS.forEach(function(plugin) {
-			if (!plugin.thirdPartyNotices) {
+			var thirdPartyNoticePath = path.join(path.dirname(plugin.paths.npm), 'ThirdPartyNotices.txt');
+			try {
+				var thirdPartyNoticeContent = fs.readFileSync(thirdPartyNoticePath).toString();
+				thirdPartyNoticeContent = thirdPartyNoticeContent.split('\n').slice(8).join('\n');
+				extraContent.push(thirdPartyNoticeContent);
+			} catch (err) {
 				return;
 			}
-
-			console.log('ADDING ThirdPartyNotices from ' + plugin.thirdPartyNotices);
-			var thirdPartyNoticeContent = fs.readFileSync(plugin.thirdPartyNotices).toString();
-			thirdPartyNoticeContent = thirdPartyNoticeContent.split('\n').slice(8).join('\n');
-			extraContent.push(thirdPartyNoticeContent);
 		});
 
 		contents += '\n' + extraContent.join('\n');
@@ -265,7 +273,7 @@ gulp.task('website', ['clean-website'], function() {
 				var contents = data.contents.toString();
 				contents = contents.replace(/\.\.\/release\/dev/g, 'node_modules/monaco-editor/min');
 				contents = contents.replace(/{{version}}/g, MONACO_EDITOR_VERSION);
-				// contents = contents.replace('&copy; 2017 Microsoft', '&copy; 2017 Microsoft [' + builtTime + ']');
+				// contents = contents.replace('&copy; 2016 Microsoft', '&copy; 2016 Microsoft [' + builtTime + ']');
 
 				// Preload xhr contents
 				contents = replaceWithRelativeResource(data.path, contents, /<pre data-preload="([^"]+)".*/g, function(m0, fileContents) {
