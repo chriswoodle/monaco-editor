@@ -13,7 +13,7 @@
   "typings": "./monaco.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Microsoft/monaco-editor"
+    "url": "https://github.com/chriswoodle/monaco-editor"
   },
   "devDependencies": {
     "clean-css": "^3.4.20",
